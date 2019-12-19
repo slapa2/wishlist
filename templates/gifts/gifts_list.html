@@ -2,13 +2,18 @@
 
 {% block content %}
 
-{% include 'gifts/add_gifts_list.html' %}
+
 
 <h3>Gifts lists:</h3>
-<ul>
-	{% for obj in queryset %}
-		<li>{{ obj.name }}</li>
-	{% endfor %}
-<ul>
+<div class="card" style="width: 18rem;">
+	<ul class="list-group list-group-flush">
+		{% for obj in queryset %}
+			<li class="list-group-item">{{ obj.name }}</li>
+		{% endfor %}
+	</ul>
+</div>
+<div>
+	{% include 'gifts/add_gifts_list.html' %}
+</div>
 
 {% endblock %}
