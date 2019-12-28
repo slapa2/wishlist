@@ -2,7 +2,10 @@ from django.db import models
 
 # Create your models here.
 class GiftsList(models.Model):
-    name = models.CharField(max_length=200) 
+    owner = models.CharField(max_length=200, default='')
+    name = models.CharField(max_length=200, default='')
+    slug = models.SlugField(default='')
+    password = models.CharField(max_length=200, default='')
 
 class Gift(models.Model):
     name = models.CharField(max_length=200)
