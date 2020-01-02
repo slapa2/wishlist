@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class GiftsList(models.Model):
@@ -6,6 +7,10 @@ class GiftsList(models.Model):
     name = models.CharField(max_length=200, default='')
     slug = models.SlugField(default='')
     password = models.CharField(max_length=200, default='')
+
+    def get_absolute_url(self):
+        return reverse('gifts_list_detail_view', kwargs={"pk": str(self.pk)})
+    
 
 class Gift(models.Model):
     name = models.CharField(max_length=200)
