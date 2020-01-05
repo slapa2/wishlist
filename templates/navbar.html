@@ -4,10 +4,20 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      {% comment %} <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="#">Features</a>
-      <a class="nav-item nav-link" href="#">Pricing</a> {% endcomment %}
-    </div>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav">
+      {% if user.is_authenticated %}
+        <li><a class="nav-item nav-link active">{{ user.username }}</a></li>
+        <li><a class="nav-item nav-link" href="{% url 'logout' %}">Wyloguj</a></li>
+      {% else %}
+        <li><a class="nav-item nav-link" href="{% url 'login' %}">Zaloguj</a></li>
+      {% endif %}
+    </ul>
+
   </div>
 </nav>
