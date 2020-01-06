@@ -4,10 +4,9 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class GiftsList(models.Model):
-    owner = models.CharField(max_length=200, default='')
     name = models.CharField(max_length=200, default='')
     slug = models.SlugField(default='')
-    password = models.CharField(max_length=200, default='')
+    password = models.CharField(max_length=200, null=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def get_absolute_url(self):
