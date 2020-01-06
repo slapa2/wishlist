@@ -6,7 +6,7 @@
         .asteriskField {display: none;}
     </style>
 
-    <form action="/" method="post">
+    <form action="/gifts_list_create" method="post">
         {% csrf_token %}
         {{ form|crispy }}
         <button type="submit" class="btn btn-primary">Stwórz</button>

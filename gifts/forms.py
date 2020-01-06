@@ -10,9 +10,8 @@ class GiftsListForm(forms.ModelForm):
 
 	class Meta:
 		model = GiftsList
-		fields = ['owner', 'name', 'password']
+		fields = ['name', 'password']
 		labels = {
-            'owner': _('Jak się nazywasz?'),
 			'name': ('Nazwa twojej listy:'),
 			'password': ('Hasło'),
         }

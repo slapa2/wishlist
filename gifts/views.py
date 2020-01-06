@@ -1,14 +1,16 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 
 from .models import GiftsList, Gift
 from .forms import GiftsListForm
 
-def index(request):
-
+@login_required
+def gifts_list_create_view(request):
 	if request.method == 'POST':
 		form = GiftsListForm(request.POST)
 		if form.is_valid():
-			# obj= form.save(commit=False)
+			obj= form.save(commit=False)
+			obj.owner = request.user
 			obj = form.save()
 			return redirect(gifts_list_detail_view, pk=obj.pk)
 	else:
