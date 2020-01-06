@@ -2,7 +2,9 @@ from slugify import slugify
 
 from django.shortcuts import render, redirect
 
+
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 
 from gifts.models import GiftsList
@@ -35,6 +37,14 @@ def register_user_view(request):
 
     template = 'registration/register.html'
     context = {'form': form}
+    return render(request, template, context)
+
+@login_required
+def home_page_view(request):
+    user_lists = GiftsList.objects.filter(owner=request.user)
+
+    template = 'users/home_page.html'
+    context= {'user_lists': user_lists}
     return render(request, template, context)
 
 

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>Witaj {{ user.username }} </h3>
+
+
+    <h4>Twoje listy prezentów:</h4>
+    <ul>
+        {% for gifts_list in user_lists %}
+            <li><a href="{% url 'gifts_list_detail_view' pk=gifts_list.pk %}">{{ gifts_list.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
