@@ -18,11 +18,13 @@ from django.urls import path, include
 from django.contrib.auth import views as auth_views
 
 from users.views import register_user_view
+from pages.views import landing_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', include('gifts.urls')),
+    path('', landing_page, name='landing_page'),
+    path('gifts/', include('gifts.urls')),
     path('register/', register_user_view, name='register'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='/login/'), name='logout'),
