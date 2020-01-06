@@ -29,7 +29,7 @@ def register_user_view(request):
             user = authenticate(username=username, password=raw_password)
             login(request, user)
 
-            return redirect(f'/gifts_list/{default_gifts_list.pk}')
+            return redirect('gifts_list_detail_view', pk=default_gifts_list.pk)
     else:
         form = UserCreationForm()
 
