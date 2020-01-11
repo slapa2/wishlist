@@ -1,5 +1,4 @@
-from slugify import slugify
-
+from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
@@ -10,24 +9,14 @@ def register_user_view(request):
 
     # redirect already authenticated user
     if request.user.is_authenticated:
-        return redirect('user_home_page_view')
+        return redirect(settings.LOGIN_REDIRECT_URL)
 
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-
-            # create default user gifts_list after user register
-            gifts_list_name = 'moja lista prezentów' 
-            default_gifts_list = GiftsList(
-                name = gifts_list_name,
-                slug = slugify(' '.join((user.username, gifts_list_name))),
-                password = None,
-                owner = user
-            )
-            default_gifts_list.save()
+            GiftsList.create_default_gifts_list(user)
             return redirect('login')
-
     else:
         form = UserCreationForm()
 
