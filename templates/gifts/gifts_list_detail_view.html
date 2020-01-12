@@ -6,8 +6,8 @@
 
     <h1>{{object.name}}</h1>
 
-    <a href="{% url 'gift_create_view' object.pk %}"type="button" class="btn btn-success">Dodaj prezent</a>
-    <a href="#" type="button" class="btn btn-danger">Usuń listę</a>
+    <a href="{% url 'gift_create_view' object.pk %}"type="button" class="btn btn-success">Dodaj prezent <i class="fas fa-plus"></i></a>
+    <a href="#" type="button" class="btn btn-danger">Usuń listę <i class="fas fa-trash-alt"></i></a>
 
     <h2>Prezenty:</h2>
 
@@ -17,9 +17,9 @@
             <div class="card-body">
                 <h5 class="card-title">{{ gift.name }}</h5>
                 <p class="card-text"></p>
-                <a href="{% url 'gift_detail_view' gift.pk %}" class="btn btn-info">Szczegóły</a>
-                <a href="{% url 'gift_update_view' gift.pk %}" class="btn btn-primary">Edytuj</a>
-                <a href="{% url 'gift_delete_view' gift.pk %}" class="btn btn-danger">Usuń</a>
+                <a href="{% url 'gift_detail_view' gift.pk %}" class="btn btn-info">Szczegóły <i class="fas fa-info"></i></a>
+                <a href="{% url 'gift_update_view' gift.pk %}" class="btn btn-primary">Edytuj <i class="fas fa-edit"></i></a>
+                <a href="{% url 'gift_delete_view' gift.pk %}" class="btn btn-danger">Usuń <i class="fas fa-trash-alt"></i></a>
             </div>
         </div>
     </div>

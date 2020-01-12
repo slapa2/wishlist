@@ -1,6 +1,8 @@
-{% extends 'base.html' %}
+{% extends 'registration/registration_base.html' %}
 
-{% block content %}
+{% block registration_title %}Rejestracja{% endblock %}
+
+{% block registration_form %}
     {% load crispy_forms_tags %}
     <style>
         .asteriskField {display: none;}
@@ -9,6 +11,6 @@
     <form action="{% url 'register' %}" method="post">
         {% csrf_token %}
         {{ form|crispy }}
-        <button type="submit" class="btn btn-primary">Zarejestruj</button>
+        <button type="submit" class="btn btn-primary">Zarejestruj <i class="fas fa-user-plus"></i></button>
     </form>
 {% endblock %}

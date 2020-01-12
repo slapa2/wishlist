@@ -38,6 +38,8 @@ def gifts_list_detail_view(request, pk):
 def gift_create_view(request, gifts_list_pk):
 
 	gifts_list = get_object_or_404(GiftsList, pk=gifts_list_pk)
+	gifts_list.can_user_edit(request.user)
+
 	if request.method == 'POST':
 		form = GiftForm(request.POST)
 		if form.is_valid():
@@ -65,6 +67,9 @@ def gift_detail_view(request, gift_pk):
 @login_required
 def gift_update_view(request, gift_pk):
 	obj = get_object_or_404(Gift, pk=gift_pk)
+
+	obj.can_user_edit(request.user)
+
 	form = GiftForm(request.POST or None, instance=obj)
 	if form.is_valid():
 		form.save()
