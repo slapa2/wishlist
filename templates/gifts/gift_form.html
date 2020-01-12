@@ -1,0 +1,21 @@
+{% extends 'gifts/gifts_base.html' %}
+
+{% block gift_content %}
+	{% load crispy_forms_tags %}
+    <style>
+        .asteriskField {display: none;}
+    </style>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-success">Zapisz</button>
+
+        {% if object %}
+            <a href="{% url 'gifts_list_detail_view' object.gifts_list.pk %}" class="btn btn-info">Anuluj</a>
+        {% elif gifts_list %}
+            <a href="{% url 'gifts_list_detail_view' gifts_list.pk %}" class="btn btn-info">Anuluj</a>
+        {%endif%}
+
+    </form>
+{% endblock %}

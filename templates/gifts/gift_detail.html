@@ -1,0 +1,10 @@
+{% extends 'gifts/gifts_base.html' %}
+{% block gift_content %}
+
+    <h1>{{object.name}}</h1>
+
+    <a href="{% url 'gift_update_view' object.pk %}" class="btn btn-primary">Edytuj</a>
+    <a href="{% url 'gift_delete_view' object.pk %}" class="btn btn-danger">Usuń</a>
+    <a href="{% url 'gifts_list_detail_view' object.gifts_list.pk %}" class="btn btn-outline-info">Powrót do listy</a>
+
+{% endblock %}

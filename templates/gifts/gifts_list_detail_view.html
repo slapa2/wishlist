@@ -1,6 +1,28 @@
-{% extends 'base.html' %}
+{% extends 'gifts/gifts_base.html' %}
 
-{% block content %}
-	<h1>{{object.name}}</h1>
-    <h2>{{ object.password }}</h2>
+
+
+{% block gift_content %}
+
+    <h1>{{object.name}}</h1>
+
+    <a href="{% url 'gift_create_view' object.pk %}"type="button" class="btn btn-success">Dodaj prezent</a>
+    <a href="#" type="button" class="btn btn-danger">Usuń listę</a>
+
+    <h2>Prezenty:</h2>
+
+    {% for gift in object.gift_set.all %}
+    <div class="row">
+        <div class="col-6 card">
+            <div class="card-body">
+                <h5 class="card-title">{{ gift.name }}</h5>
+                <p class="card-text"></p>
+                <a href="{% url 'gift_detail_view' gift.pk %}" class="btn btn-info">Szczegóły</a>
+                <a href="{% url 'gift_update_view' gift.pk %}" class="btn btn-primary">Edytuj</a>
+                <a href="{% url 'gift_delete_view' gift.pk %}" class="btn btn-danger">Usuń</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
 {% endblock %}

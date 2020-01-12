@@ -1,0 +1,16 @@
+{% extends 'gifts/gifts_base.html' %}
+
+{% block gift_content %}
+	{% load crispy_forms_tags %}
+    <style>
+        .asteriskField {display: none;}
+    </style>
+
+    <h1> Czy na pewno chcesz usunąć prezent: {{ object.name }}? </h1>
+    <form action="{% url 'gift_delete_view' object.pk %}" method="post">
+
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Usuń</button>
+        <a href="{% url 'gifts_list_detail_view' object.gifts_list.pk %}" class="btn btn-info">Anuluj</a>
+    </form>
+{% endblock %}

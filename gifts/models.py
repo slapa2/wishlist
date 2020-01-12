@@ -28,9 +28,9 @@ class GiftsList(models.Model):
 
 class Gift(models.Model):
     name = models.CharField(max_length=200)
-    status = models.CharField(max_length=200)
-    img_url = models.CharField(max_length=400)
-    gift_list = models.ForeignKey(GiftsList, on_delete=models.CASCADE)
+    status = models.CharField(max_length=200, blank=True, null=True)
+    img_url = models.CharField(max_length=400, blank=True, null=True)
+    gifts_list = models.ForeignKey(GiftsList, on_delete=models.CASCADE)
 
 class GiftUrl(models.Model):
     url = models.CharField(max_length=400)

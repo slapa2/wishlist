@@ -24,7 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', landing_page, name='landing_page'),
-    path('gift/', include('gifts.urls')),
+    path('gifts/', include('gifts.urls')),
     path('user/', include('users.urls')),
     
     path('register/', register_user_view, name='register'),
